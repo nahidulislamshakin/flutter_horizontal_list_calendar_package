@@ -2,31 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'horizontal_list_calendar_state.dart';
 
-final horizontalListCalendarRiverpodProvider = StateNotifierProvider<HorizontalListCalendarRiverpod, HorizontalListCalendarState>((ref) => HorizontalListCalendarRiverpod(),);
+final horizontalListCalendarRiverpodProvider = StateNotifierProvider<
+  HorizontalListCalendarRiverpod,
+  HorizontalListCalendarState
+>((ref) => HorizontalListCalendarRiverpod());
 
-class HorizontalListCalendarRiverpod extends StateNotifier<HorizontalListCalendarState>{
-  HorizontalListCalendarRiverpod() : super(HorizontalListCalendarState()){
+class HorizontalListCalendarRiverpod
+    extends StateNotifier<HorizontalListCalendarState> {
+  HorizontalListCalendarRiverpod() : super(HorizontalListCalendarState()) {
     setCurrentDate();
-  //  WidgetsBinding.instance.addPostFrameCallback((_) => scrollToCurrentDate());
+    //  WidgetsBinding.instance.addPostFrameCallback((_) => scrollToCurrentDate());
   }
 
   void setCurrentDate() {
-
-    final currentDate =  DateTime(
+    final currentDate = DateTime(
       DateTime.now().year,
       DateTime.now().month,
       DateTime.now().day,
     );
-    state = state.copyWith(
-      currentDate:  currentDate,
-      selectedDate: currentDate,
-    );
+    state = state.copyWith(currentDate: currentDate, selectedDate: currentDate);
   }
-
 
   /// Scroll controller for calendar
   final ScrollController calendarScrollController = ScrollController();
-
 
   /// List of days in the current month
   List<DateTime> get daysInMonth => _getDaysInMonth(state.currentDate!);
@@ -36,7 +34,7 @@ class HorizontalListCalendarRiverpod extends StateNotifier<HorizontalListCalenda
     int daysInMonth = DateTime(date.year, date.month + 1, 0).day;
     return List.generate(
       daysInMonth,
-          (index) => DateTime(date.year, date.month, index + 1),
+      (index) => DateTime(date.year, date.month, index + 1),
     );
   }
 
@@ -51,38 +49,38 @@ class HorizontalListCalendarRiverpod extends StateNotifier<HorizontalListCalenda
         currentDate.year == DateTime.now().year) {
       currentDate = DateTime.now();
     }
-    state = state.copyWith(
-      currentDate: currentDate
-    );
-
+    state = state.copyWith(currentDate: currentDate);
   }
 
   /// Scroll to current date
   void scrollToCurrentDate({Duration? duration}) {
     int currentIndex = state.currentDate!.day - 1;
     double itemWidth = 51;
+
     /// Total scrollable width
     double screenWidth = calendarScrollController.position.viewportDimension;
 
     /// Scroll to current date
     double scrollTo =
         (currentIndex * itemWidth) - (screenWidth / 2) + (itemWidth / 2);
-    calendarScrollController.animateTo(duration: duration ?? Duration(milliseconds: 600),curve: Curves.linear,
+    calendarScrollController.animateTo(
+      duration: duration ?? Duration(milliseconds: 600),
+      curve: Curves.linear,
       scrollTo.clamp(0, calendarScrollController.position.maxScrollExtent),
     );
   }
 
   /// on select a date
-  void onSelectDate({required int index, required Function(DateTime) onTap}){
-    final selectedDate = DateTime(state.currentDate!.year, state.currentDate!.month, index+1);
+  void onSelectDate({required int index, required Function(DateTime) onTap}) {
+    final selectedDate = DateTime(
+      state.currentDate!.year,
+      state.currentDate!.month,
+      index + 1,
+    );
     state = state.copyWith(
       selectedDate: selectedDate,
-      currentDate: selectedDate
+      currentDate: selectedDate,
     );
     onTap(state.selectedDate!);
-
   }
-
-
-
 }

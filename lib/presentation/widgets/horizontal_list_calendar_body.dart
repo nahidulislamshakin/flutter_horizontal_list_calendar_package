@@ -13,15 +13,15 @@ class HorizontalListCalendarBody extends ConsumerWidget {
   final Color todayDateColor;
   final Color todayFillColor;
 
-   const HorizontalListCalendarBody({
-     super.key,
-     required this.onTap,
-     this.bodyPadding,
-     required this.textStyle,
-     required this.selectedDateBorderColor,
-     required this.todayDateColor,
-     required this.todayFillColor,
-   });
+  const HorizontalListCalendarBody({
+    super.key,
+    required this.onTap,
+    this.bodyPadding,
+    required this.textStyle,
+    required this.selectedDateBorderColor,
+    required this.todayDateColor,
+    required this.todayFillColor,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -33,7 +33,9 @@ class HorizontalListCalendarBody extends ConsumerWidget {
     );
 
     /// Scroll to selected date
-    WidgetsBinding.instance.addPostFrameCallback((_) => horizontalListCalendarNotifier.scrollToCurrentDate());
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) => horizontalListCalendarNotifier.scrollToCurrentDate(),
+    );
 
     return ListView.builder(
       itemCount: horizontalListCalendarNotifier.daysInMonth.length,
@@ -49,8 +51,10 @@ class HorizontalListCalendarBody extends ConsumerWidget {
         bool isSelectedDay = date == horizontalListCalendarState.selectedDate;
         return GestureDetector(
           onTap: () {
-            horizontalListCalendarNotifier.onSelectDate(index: index, onTap: onTap);
-
+            horizontalListCalendarNotifier.onSelectDate(
+              index: index,
+              onTap: onTap,
+            );
           },
           child: Container(
             width: 47,
@@ -58,12 +62,14 @@ class HorizontalListCalendarBody extends ConsumerWidget {
             margin: EdgeInsets.only(right: 4),
             padding: EdgeInsets.all(10),
             decoration: BoxDecoration(
-              color:
-                  isToday
-                      ? todayFillColor
-                      : Colors.transparent,
+              color: isToday ? todayFillColor : Colors.transparent,
               border: Border.all(
-                color: isToday && isSelectedDay ? Colors.transparent : isSelectedDay ? selectedDateBorderColor : Colors.transparent,
+                color:
+                    isToday && isSelectedDay
+                        ? Colors.transparent
+                        : isSelectedDay
+                        ? selectedDateBorderColor
+                        : Colors.transparent,
               ),
               borderRadius: BorderRadius.circular(12),
             ),
@@ -74,11 +80,8 @@ class HorizontalListCalendarBody extends ConsumerWidget {
                 Text(
                   date.day.toString(),
                   style: textStyle.copyWith(
-                    color:
-                    isToday
-                        ? todayDateColor
-                        : null,
-                  )
+                    color: isToday ? todayDateColor : null,
+                  ),
                 ),
 
                 SizedBox(height: 2),
@@ -89,11 +92,8 @@ class HorizontalListCalendarBody extends ConsumerWidget {
                     DateFormat.E().format(date),
 
                     style: textStyle.copyWith(
-                      color:
-                      isToday
-                          ? todayDateColor
-                          : null,
-                    )
+                      color: isToday ? todayDateColor : null,
+                    ),
                   ),
                 ),
               ],
