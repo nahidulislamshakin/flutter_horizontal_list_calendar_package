@@ -4,7 +4,8 @@ version: 0.0.1
 author: 'Nahidul Islam Shakin <shakinhabib2000@gmail.com>'
 publish_to: 'https://pub.dev'
 
-homepage:
+homepage: https://github.com/nahidulislamshakin/flutter_horizontal_list_calendar.git
+repository: https://github.com/nahidulislamshakin/flutter_horizontal_list_calendar.git
 environment:
   sdk: ^3.7.2
   flutter: ">=1.17.0"
