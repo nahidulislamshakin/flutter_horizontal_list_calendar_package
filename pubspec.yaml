@@ -4,6 +4,24 @@ version: 0.0.1
 
 homepage: https://github.com/nahidulislamshakin/flutter_horizontal_list_calendar.git
 repository: https://github.com/nahidulislamshakin/flutter_horizontal_list_calendar.git
+keywords:
+  - horizontal
+  - calendar
+  - date picker
+  - date selector
+  - date scroll
+  - horizontal list calendar
+  - list
+  - list calendar
+  - Nahidul
+  - Shakin
+  - Nahidul Islam Shakin
+  - nahidulislamshakin
+  - flutter calendar
+  - flutter
+  - flutter horizontal calendar
+  - custom horizontal calendar
+  - custom calendar
 environment:
   sdk: ^3.7.2
   flutter: ">=1.17.0"
