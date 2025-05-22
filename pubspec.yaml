@@ -1,0 +1,28 @@
+name: horizontal_list_calendar
+description: "A customizable horizontal list view calendar widget."
+version: 0.0.1
+author: 'Nahidul Islam Shakin <shakinhabib2000@gmail.com>'
+publish_to: 'https://pub.dev'
+
+homepage:
+environment:
+  sdk: ^3.7.2
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_riverpod: ^2.6.1
+  intl: ^0.20.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+
+
+# The following section is specific to Flutter packages.
+flutter:
+
+
