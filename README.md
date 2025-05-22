@@ -20,4 +20,4 @@ Add the following dependency to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  horizontal_list_calendar: ^0.0.1
+  horizontal_list_calendar: ^0.0.2
