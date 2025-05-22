@@ -1,3 +1,3 @@
-library horizontal_list_calendar;
+library;
 
 export 'horizontal_list_calendar.dart';

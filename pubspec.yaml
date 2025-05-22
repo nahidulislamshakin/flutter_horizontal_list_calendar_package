@@ -1,7 +1,6 @@
 name: horizontal_list_calendar
 description: "A customizable horizontal list view calendar widget."
 version: 0.0.1
-author: 'Nahidul Islam Shakin <shakinhabib2000@gmail.com>'
 publish_to: 'https://pub.dev'
 
 homepage: https://github.com/nahidulislamshakin/flutter_horizontal_list_calendar.git
