@@ -4,25 +4,28 @@ import 'package:intl/intl.dart';
 import '../../riverpod/horizontal_list_calendar_riverpod.dart';
 
 class HorizontalListCalendarHeader extends ConsumerWidget {
-  final TextStyle textStyle;
+  final TextStyle headerTextStyle;
+  final double iconSize;
   final Icon? moveToPreviousMonthIcon;
-  final Color? moveToPreviousMonthIconBackgroundColor;
-  final Color? moveToPreviousMonthIconColor;
+  final Color moveToPreviousMonthIconBackgroundColor;
+  final Color moveToPreviousMonthIconColor;
   final Icon? moveToNextMonthIcon;
-  final Color? moveToNextMonthIconBackgroundColor;
-  final Color? moveToNextMonthIconColor;
+  final Color moveToNextMonthIconBackgroundColor;
+  final Color moveToNextMonthIconColor;
 
   const HorizontalListCalendarHeader({
     super.key,
-    required this.textStyle,
+    required this.headerTextStyle,
+    required this.iconSize,
     this.moveToPreviousMonthIcon,
     this.moveToNextMonthIcon,
-    this.moveToNextMonthIconBackgroundColor,
-    this.moveToNextMonthIconColor,
-    this.moveToPreviousMonthIconBackgroundColor,
-    this.moveToPreviousMonthIconColor,
+    required this.moveToNextMonthIconBackgroundColor,
+    required this.moveToNextMonthIconColor,
+    required this.moveToPreviousMonthIconBackgroundColor,
+    required this.moveToPreviousMonthIconColor,
   });
 
+  /// arrow button widget
   Widget _buildArrowButton({
     required VoidCallback onTap,
     required Color color,
@@ -34,7 +37,7 @@ class HorizontalListCalendarHeader extends ConsumerWidget {
       child: Container(
         padding: EdgeInsets.all(6),
         decoration: BoxDecoration(color: color, shape: BoxShape.circle),
-        child: Icon(icon, color: iconColor, size: 14),
+        child: Icon(icon, color: iconColor, size: iconSize),
       ),
     );
   }
@@ -54,7 +57,7 @@ class HorizontalListCalendarHeader extends ConsumerWidget {
           DateFormat(
             'MMMM yyyy',
           ).format(horizontalListCalendarState.currentDate!),
-          style: textStyle,
+          style: headerTextStyle,
         ),
 
         Spacer(),
@@ -66,10 +69,9 @@ class HorizontalListCalendarHeader extends ConsumerWidget {
             )
             : _buildArrowButton(
               onTap: () => horizontalListCalendarNotifier.changeMonth(-1),
-              color:
-                  moveToPreviousMonthIconBackgroundColor ?? Color(0xff2B2C31),
+              color: moveToPreviousMonthIconBackgroundColor,
               icon: Icons.arrow_back_ios_rounded,
-              iconColor: moveToPreviousMonthIconColor ?? Color(0xffD2D2D5),
+              iconColor: moveToPreviousMonthIconColor,
             ),
         SizedBox(width: 12),
 
@@ -80,10 +82,9 @@ class HorizontalListCalendarHeader extends ConsumerWidget {
             )
             : _buildArrowButton(
               onTap: () => horizontalListCalendarNotifier.changeMonth(1),
-              color:
-                  moveToPreviousMonthIconBackgroundColor ?? Color(0xff2B2C31),
+              color: moveToPreviousMonthIconBackgroundColor,
               icon: Icons.arrow_forward_ios_outlined,
-              iconColor: moveToPreviousMonthIconColor ?? Color(0xffD2D2D5),
+              iconColor: moveToPreviousMonthIconColor,
             ),
       ],
     );

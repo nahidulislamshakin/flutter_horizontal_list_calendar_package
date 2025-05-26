@@ -6,21 +6,40 @@ import '../../riverpod/horizontal_list_calendar_riverpod.dart';
 
 class HorizontalListCalendarBody extends ConsumerWidget {
   final Function(DateTime time) onTap;
-  final EdgeInsets? bodyPadding;
+  final EdgeInsets bodyPadding;
 
-  final TextStyle textStyle;
-  final Color selectedDateBorderColor;
-  final Color todayDateColor;
+  /// selected
+  final Color selectedColor;
+  final Color selectedFillColor;
+  final TextStyle selectedTextStyle;
+
+
+  /// all about unselected
+  final Color unSelectedFillColor;
+  final TextStyle unSelectedTextStyle;
+
+  /// all about today
   final Color todayFillColor;
+  final TextStyle todayTextStyle;
+
+  /// Animation
+  final Curve curve;
+  final Duration duration;
 
   const HorizontalListCalendarBody({
     super.key,
     required this.onTap,
-    this.bodyPadding,
-    required this.textStyle,
-    required this.selectedDateBorderColor,
-    required this.todayDateColor,
+    required this.bodyPadding,
+    required this.selectedTextStyle,
+    required this.selectedColor,
+    required this.selectedFillColor,
+    required this.unSelectedFillColor,
+    required this.unSelectedTextStyle,
+    required this.todayTextStyle,
     required this.todayFillColor,
+    /// Animation
+    required this.curve,
+    required this.duration,
   });
 
   @override
@@ -34,13 +53,16 @@ class HorizontalListCalendarBody extends ConsumerWidget {
 
     /// Scroll to selected date
     WidgetsBinding.instance.addPostFrameCallback(
-      (_) => horizontalListCalendarNotifier.scrollToCurrentDate(),
+      (_) => horizontalListCalendarNotifier.scrollToCurrentDate(
+        duration: duration,
+        curve: curve,
+      ),
     );
 
     return ListView.builder(
       itemCount: horizontalListCalendarNotifier.daysInMonth.length,
       scrollDirection: Axis.horizontal,
-      padding: bodyPadding ?? EdgeInsets.symmetric(horizontal: 10),
+      padding: bodyPadding,
       controller: horizontalListCalendarNotifier.calendarScrollController,
       itemBuilder: (_, index) {
         final date = horizontalListCalendarNotifier.daysInMonth[index];
@@ -62,14 +84,13 @@ class HorizontalListCalendarBody extends ConsumerWidget {
             margin: EdgeInsets.only(right: 4),
             padding: EdgeInsets.all(10),
             decoration: BoxDecoration(
-              color: isToday ? todayFillColor : Colors.transparent,
+              color:  isSelectedDay ? selectedFillColor : isToday ? todayFillColor : unSelectedFillColor,
               border: Border.all(
                 color:
-                    isToday && isSelectedDay
-                        ? Colors.transparent
-                        : isSelectedDay
-                        ? selectedDateBorderColor
-                        : Colors.transparent,
+                   isSelectedDay
+                        ? selectedColor
+                       : Colors.transparent,
+
               ),
               borderRadius: BorderRadius.circular(12),
             ),
@@ -79,9 +100,7 @@ class HorizontalListCalendarBody extends ConsumerWidget {
                 /// day of month
                 Text(
                   date.day.toString(),
-                  style: textStyle.copyWith(
-                    color: isToday ? todayDateColor : null,
-                  ),
+                  style: isSelectedDay ? selectedTextStyle : isToday ? todayTextStyle : unSelectedTextStyle,
                 ),
 
                 SizedBox(height: 2),
@@ -91,9 +110,7 @@ class HorizontalListCalendarBody extends ConsumerWidget {
                   child: Text(
                     DateFormat.E().format(date),
 
-                    style: textStyle.copyWith(
-                      color: isToday ? todayDateColor : null,
-                    ),
+                    style: isSelectedDay ? selectedTextStyle : isToday ? todayTextStyle : unSelectedTextStyle,
                   ),
                 ),
               ],

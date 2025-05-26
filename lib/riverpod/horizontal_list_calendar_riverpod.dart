@@ -53,7 +53,7 @@ class HorizontalListCalendarRiverpod
   }
 
   /// Scroll to current date
-  void scrollToCurrentDate({Duration? duration}) {
+  void scrollToCurrentDate({required Duration duration, required Curve curve}) {
     int currentIndex = state.currentDate!.day - 1;
     double itemWidth = 51;
 
@@ -64,8 +64,8 @@ class HorizontalListCalendarRiverpod
     double scrollTo =
         (currentIndex * itemWidth) - (screenWidth / 2) + (itemWidth / 2);
     calendarScrollController.animateTo(
-      duration: duration ?? Duration(milliseconds: 600),
-      curve: Curves.linear,
+      duration: duration,
+      curve: curve,
       scrollTo.clamp(0, calendarScrollController.position.maxScrollExtent),
     );
   }
