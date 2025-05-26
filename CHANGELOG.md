@@ -1,6 +1,6 @@
 # Changelog
 
-## [0.1.4] - 2025-05-26
+## [0.0.4] - 2025-05-26
 
 ### Added
 - Created the `HorizontalListCalendar` widget for displaying a horizontally scrollable calendar.
