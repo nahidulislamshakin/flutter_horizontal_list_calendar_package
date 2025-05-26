@@ -11,6 +11,7 @@ class HorizontalListCalendar extends StatelessWidget {
 
   /// bodyPadding is the padding of the body of the calendar
   final EdgeInsets bodyPadding;
+  final EdgeInsets headerPadding;
 
   /// Parameter for body
   ///
@@ -59,6 +60,7 @@ class HorizontalListCalendar extends StatelessWidget {
     super.key,
     required this.onTap,
     this.bodyPadding = EdgeInsets.zero,
+    this.headerPadding = EdgeInsets.zero,
 
     /// selected parameter
     this.selectedColor = Colors.blue,
@@ -115,17 +117,20 @@ class HorizontalListCalendar extends StatelessWidget {
         spacing: 24,
         children: [
           /// Header of the calendar
-          HorizontalListCalendarHeader(
-            headerTextStyle: headerTextStyle,
-            iconSize: iconSize,
-            moveToPreviousMonthIcon: moveToPreviousMonthIcon,
-            moveToPreviousMonthIconBackgroundColor:
-                moveToPreviousMonthIconBackgroundColor,
-            moveToPreviousMonthIconColor: moveToPreviousMonthIconColor,
-            moveToNextMonthIcon: moveToNextMonthIcon,
-            moveToNextMonthIconBackgroundColor:
-                moveToNextMonthIconBackgroundColor,
-            moveToNextMonthIconColor: moveToNextMonthIconColor,
+          Padding(
+            padding: headerPadding,
+            child: HorizontalListCalendarHeader(
+              headerTextStyle: headerTextStyle,
+              iconSize: iconSize,
+              moveToPreviousMonthIcon: moveToPreviousMonthIcon,
+              moveToPreviousMonthIconBackgroundColor:
+                  moveToPreviousMonthIconBackgroundColor,
+              moveToPreviousMonthIconColor: moveToPreviousMonthIconColor,
+              moveToNextMonthIcon: moveToNextMonthIcon,
+              moveToNextMonthIconBackgroundColor:
+                  moveToNextMonthIconBackgroundColor,
+              moveToNextMonthIconColor: moveToNextMonthIconColor,
+            ),
           ),
 
           /// Body of the calendar

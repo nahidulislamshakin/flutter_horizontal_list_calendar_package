@@ -55,7 +55,7 @@ class HorizontalListCalendarRiverpod
   /// Scroll to current date
   void scrollToCurrentDate({required Duration duration, required Curve curve}) {
     int currentIndex = state.currentDate!.day - 1;
-    double itemWidth = 51;
+    double itemWidth = 55;
 
     /// Total scrollable width
     double screenWidth = calendarScrollController.position.viewportDimension;

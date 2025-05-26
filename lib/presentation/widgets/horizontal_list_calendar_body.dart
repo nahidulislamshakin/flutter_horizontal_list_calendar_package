@@ -79,10 +79,10 @@ class HorizontalListCalendarBody extends ConsumerWidget {
             );
           },
           child: Container(
-            width: 47,
+            width: 45,
             height: 68,
-            margin: EdgeInsets.only(right: 4),
-            padding: EdgeInsets.all(10),
+            margin: EdgeInsets.only(right: 10),
+            padding: EdgeInsets.all(8),
             decoration: BoxDecoration(
               color:
                   isSelectedDay && !isToday
@@ -99,29 +99,32 @@ class HorizontalListCalendarBody extends ConsumerWidget {
             child: Column(
               children: [
                 /// day of month
-                Text(
-                  date.day.toString(),
-                  style:
-                      isSelectedDay && !isToday
-                          ? selectedTextStyle
-                          : isToday
-                          ? todayTextStyle
-                          : unSelectedTextStyle,
-                ),
-
-                SizedBox(height: 2),
-
-                /// day of week
                 Expanded(
                   child: Text(
-                    DateFormat.E().format(date),
-
+                    date.day.toString(),
                     style:
                         isSelectedDay && !isToday
                             ? selectedTextStyle
                             : isToday
                             ? todayTextStyle
                             : unSelectedTextStyle,
+                  ),
+                ),
+
+                SizedBox(height: 1),
+
+                /// day of week
+                Flexible(
+                  child: Text(
+                    DateFormat.E().format(date),
+
+                    style:
+                        isSelectedDay && !isToday
+                            ? selectedTextStyle.copyWith(fontSize: (selectedTextStyle.fontSize! - 1),)
+                            : isToday
+                            ? todayTextStyle.copyWith(fontSize: (todayTextStyle.fontSize! - 1),)
+                            : unSelectedTextStyle.copyWith(fontSize: (unSelectedTextStyle.fontSize! - 1),),
+                    maxLines: 1,
                   ),
                 ),
               ],

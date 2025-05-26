@@ -82,9 +82,9 @@ class HorizontalListCalendarHeader extends ConsumerWidget {
             )
             : _buildArrowButton(
               onTap: () => horizontalListCalendarNotifier.changeMonth(1),
-              color: moveToPreviousMonthIconBackgroundColor,
+              color: moveToNextMonthIconBackgroundColor,
               icon: Icons.arrow_forward_ios_outlined,
-              iconColor: moveToPreviousMonthIconColor,
+              iconColor: moveToNextMonthIconColor,
             ),
       ],
     );
