@@ -10,7 +10,7 @@ A customizable horizontal calendar widget for Flutter. The `HorizontalListCalend
 - Easy to integrate with any Flutter app.
 - Built-in support for **Riverpod** state management for date selection (optional, can be handled externally).
 
-![Horizontal List Calendar Example](assets/images/example.png)
+![Horizontal List Calendar Example](https://raw.githubusercontent.com/nahidulislamshakin/flutter_horizontal_list_calendar_package/main/assets/images/example.png)
 
 ## Parameters
 
