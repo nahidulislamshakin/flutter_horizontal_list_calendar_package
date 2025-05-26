@@ -120,10 +120,16 @@ class HorizontalListCalendarBody extends ConsumerWidget {
 
                     style:
                         isSelectedDay && !isToday
-                            ? selectedTextStyle.copyWith(fontSize: (selectedTextStyle.fontSize! - 1),)
+                            ? selectedTextStyle.copyWith(
+                              fontSize: (selectedTextStyle.fontSize! - 1),
+                            )
                             : isToday
-                            ? todayTextStyle.copyWith(fontSize: (todayTextStyle.fontSize! - 1),)
-                            : unSelectedTextStyle.copyWith(fontSize: (unSelectedTextStyle.fontSize! - 1),),
+                            ? todayTextStyle.copyWith(
+                              fontSize: (todayTextStyle.fontSize! - 1),
+                            )
+                            : unSelectedTextStyle.copyWith(
+                              fontSize: (unSelectedTextStyle.fontSize! - 1),
+                            ),
                     maxLines: 1,
                   ),
                 ),
