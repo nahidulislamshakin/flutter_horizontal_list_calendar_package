@@ -1,6 +1,6 @@
 # Changelog
 
-## [0.0.8] - 2025-05-26
+## [0.0.9] - 2025-05-26
 
 ### Added
 - Created the `HorizontalListCalendar` widget for displaying a horizontally scrollable calendar.
@@ -21,4 +21,7 @@
 - 'todayFillColor' for the today date Container fill color
 - 'todayTextStyle' for the today text style
 - 'headerTextStyle' for the header text style
+
+### Removed
+- 'bodyPadding' removed for centering the selected date
 

@@ -16,33 +16,33 @@ A customizable horizontal calendar widget for Flutter. The `HorizontalListCalend
 
 Here’s a table listing all the parameters you can use with the `HorizontalListCalendar` widget:
 
-| **Parameter**                                    | **Type**               | **Description**                                                            | **Default Value**                                           |
-|--------------------------------------------------|------------------------|----------------------------------------------------------------------------|-------------------------------------------------------------|
-| `onTap`                                           | `Function(DateTime)`    | The callback function to handle date tap events. **Required**               | N/A                                                         |
-| `bodyPadding`                                     | `EdgeInsets`           | Padding around the calendar body.                                          | `EdgeInsets.zero`                                           |
-| **Selected Date Styling**                        |                        |                                                                            |                                                             |
-| `selectedColor`                                   | `Color`                | The color of the selected date.                                             | `Colors.blue`                                               |
-| `selectedFillColor`                               | `Color`                | Background fill color for the selected date.                                | `Colors.transparent`                                        |
-| `selectedTextStyle`                               | `TextStyle`            | Text style for the selected date.                                           | `TextStyle(fontSize: 18, fontWeight: FontWeight.w600, color: Colors.blue)` |
-| **Unselected Date Styling**                      |                        |                                                                            |                                                             |
-| `unSelectedFillColor`                             | `Color`                | Background fill color for unselected dates.                                 | `Colors.transparent`                                        |
-| `unSelectedTextStyle`                             | `TextStyle`            | Text style for unselected dates.                                           | `TextStyle(fontSize: 18, fontWeight: FontWeight.w600, color: Colors.blue)` |
-| **Today's Date Styling**                         |                        |                                                                            |                                                             |
-| `todayFillColor`                                  | `Color`                | Background color for today's date.                                          | `Colors.blue`                                               |
-| `todayTextStyle`                                  | `TextStyle`            | Text style for today's date.                                               | `TextStyle(fontSize: 18, fontWeight: FontWeight.w600, color: Colors.white)` |
-| **Header Styling**                                |                        |                                                                            |                                                             |
-| `headerTextStyle`                                 | `TextStyle`            | Text style for the header.                                                  | `TextStyle(fontSize: 18, fontWeight: FontWeight.w600, color: Colors.blue)` |
-| **Icon Styling**                                  |                        |                                                                            |                                                             |
-| `iconSize`                                        | `double`               | Size of the navigation icons.                                              | `18`                                                         |
-| `moveToPreviousMonthIcon`                         | `Icon?`                | Custom icon for moving to the previous month.                               | `null`                                                       |
-| `moveToPreviousMonthIconBackgroundColor`         | `Color`                | Background color of the previous month icon.                                | `Colors.blue`                                               |
-| `moveToPreviousMonthIconColor`                   | `Color`                | Color of the previous month icon.                                           | `Colors.white`                                              |
-| `moveToNextMonthIcon`                             | `Icon?`                | Custom icon for moving to the next month.                                   | `null`                                                       |
-| `moveToNextMonthIconBackgroundColor`             | `Color`                | Background color of the next month icon.                                    | `Colors.blue`                                               |
-| `moveToNextMonthIconColor`                       | `Color`                | Color of the next month icon.                                              | `Colors.white`                                              |
-| **Animation Parameters**                          |                        |                                                                            |                                                             |
-| `curve`                                           | `Curve`                | The curve for the animation when switching months.                          | `Curves.linear`                                             |
-| `duration`                                        | `Duration`             | Duration of the animation when switching months.                            | `const Duration(milliseconds: 600)`                         |
+| **Parameter**                            | **Type**               | **Description**                                               | **Default Value**                                           |
+|------------------------------------------|------------------------|---------------------------------------------------------------|-------------------------------------------------------------|
+| `onTap`                                  | `Function(DateTime)`    | The callback function to handle date tap events. **Required** | N/A                                                         |
+| `headerPadding`                          | `EdgeInsets`           | Padding around the calendar header.                           | `EdgeInsets.zero`                                           |
+| **Selected Date Styling**                |                        |                                                               |                                                             |
+| `selectedColor`                          | `Color`                | The color of the selected date.                               | `Colors.blue`                                               |
+| `selectedFillColor`                      | `Color`                | Background fill color for the selected date.                  | `Colors.transparent`                                        |
+| `selectedTextStyle`                      | `TextStyle`            | Text style for the selected date.                             | `TextStyle(fontSize: 18, fontWeight: FontWeight.w600, color: Colors.blue)` |
+| **Unselected Date Styling**              |                        |                                                               |                                                             |
+| `unSelectedFillColor`                    | `Color`                | Background fill color for unselected dates.                   | `Colors.transparent`                                        |
+| `unSelectedTextStyle`                    | `TextStyle`            | Text style for unselected dates.                              | `TextStyle(fontSize: 18, fontWeight: FontWeight.w600, color: Colors.blue)` |
+| **Today's Date Styling**                 |                        |                                                               |                                                             |
+| `todayFillColor`                         | `Color`                | Background color for today's date.                            | `Colors.blue`                                               |
+| `todayTextStyle`                         | `TextStyle`            | Text style for today's date.                                  | `TextStyle(fontSize: 18, fontWeight: FontWeight.w600, color: Colors.white)` |
+| **Header Styling**                       |                        |                                                               |                                                             |
+| `headerTextStyle`                        | `TextStyle`            | Text style for the header.                                    | `TextStyle(fontSize: 18, fontWeight: FontWeight.w600, color: Colors.blue)` |
+| **Icon Styling**                         |                        |                                                               |                                                             |
+| `iconSize`                               | `double`               | Size of the navigation icons.                                 | `18`                                                         |
+| `moveToPreviousMonthIcon`                | `Icon?`                | Custom icon for moving to the previous month.                 | `null`                                                       |
+| `moveToPreviousMonthIconBackgroundColor` | `Color`                | Background color of the previous month icon.                  | `Colors.blue`                                               |
+| `moveToPreviousMonthIconColor`           | `Color`                | Color of the previous month icon.                             | `Colors.white`                                              |
+| `moveToNextMonthIcon`                    | `Icon?`                | Custom icon for moving to the next month.                     | `null`                                                       |
+| `moveToNextMonthIconBackgroundColor`     | `Color`                | Background color of the next month icon.                      | `Colors.blue`                                               |
+| `moveToNextMonthIconColor`               | `Color`                | Color of the next month icon.                                 | `Colors.white`                                              |
+| **Animation Parameters**                 |                        |                                                               |                                                             |
+| `curve`                                  | `Curve`                | The curve for the animation when switching months.            | `Curves.linear`                                             |
+| `duration`                               | `Duration`             | Duration of the animation when switching months.              | `const Duration(milliseconds: 600)`                         |
 
 ## Example Usage
 

@@ -10,7 +10,6 @@ class HorizontalListCalendar extends StatelessWidget {
   final Function(DateTime time) onTap;
 
   /// bodyPadding is the padding of the body of the calendar
-  final EdgeInsets bodyPadding;
   final EdgeInsets headerPadding;
 
   /// Parameter for body
@@ -59,7 +58,6 @@ class HorizontalListCalendar extends StatelessWidget {
   const HorizontalListCalendar({
     super.key,
     required this.onTap,
-    this.bodyPadding = EdgeInsets.zero,
     this.headerPadding = EdgeInsets.zero,
 
     /// selected parameter
@@ -138,7 +136,6 @@ class HorizontalListCalendar extends StatelessWidget {
             height: 70,
             child: HorizontalListCalendarBody(
               onTap: onTap,
-              bodyPadding: bodyPadding,
               selectedTextStyle: selectedTextStyle,
               selectedColor: selectedColor,
               selectedFillColor: selectedFillColor,

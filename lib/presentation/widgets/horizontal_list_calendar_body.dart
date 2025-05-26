@@ -6,7 +6,6 @@ import '../../riverpod/horizontal_list_calendar_riverpod.dart';
 
 class HorizontalListCalendarBody extends ConsumerWidget {
   final Function(DateTime time) onTap;
-  final EdgeInsets bodyPadding;
 
   /// selected
   final Color selectedColor;
@@ -28,7 +27,6 @@ class HorizontalListCalendarBody extends ConsumerWidget {
   const HorizontalListCalendarBody({
     super.key,
     required this.onTap,
-    required this.bodyPadding,
     required this.selectedTextStyle,
     required this.selectedColor,
     required this.selectedFillColor,
@@ -62,7 +60,7 @@ class HorizontalListCalendarBody extends ConsumerWidget {
     return ListView.builder(
       itemCount: horizontalListCalendarNotifier.daysInMonth.length,
       scrollDirection: Axis.horizontal,
-      padding: bodyPadding,
+      padding: EdgeInsets.zero,
       controller: horizontalListCalendarNotifier.calendarScrollController,
       itemBuilder: (_, index) {
         final date = horizontalListCalendarNotifier.daysInMonth[index];
