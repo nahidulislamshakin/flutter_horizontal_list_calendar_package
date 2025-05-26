@@ -119,7 +119,8 @@ class HorizontalListCalendar extends StatelessWidget {
             headerTextStyle: headerTextStyle,
             iconSize: iconSize,
             moveToPreviousMonthIcon: moveToPreviousMonthIcon,
-            moveToPreviousMonthIconBackgroundColor: moveToPreviousMonthIconBackgroundColor,
+            moveToPreviousMonthIconBackgroundColor:
+                moveToPreviousMonthIconBackgroundColor,
             moveToPreviousMonthIconColor: moveToPreviousMonthIconColor,
             moveToNextMonthIcon: moveToNextMonthIcon,
             moveToNextMonthIconBackgroundColor:
