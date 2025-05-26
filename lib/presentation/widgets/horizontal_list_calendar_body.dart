@@ -84,7 +84,7 @@ class HorizontalListCalendarBody extends ConsumerWidget {
             margin: EdgeInsets.only(right: 4),
             padding: EdgeInsets.all(10),
             decoration: BoxDecoration(
-              color:  isSelectedDay ? selectedFillColor : isToday ? todayFillColor : unSelectedFillColor,
+              color:  isSelectedDay && !isToday ? selectedFillColor : isToday ? todayFillColor : unSelectedFillColor,
               border: Border.all(
                 color:
                    isSelectedDay
@@ -100,7 +100,7 @@ class HorizontalListCalendarBody extends ConsumerWidget {
                 /// day of month
                 Text(
                   date.day.toString(),
-                  style: isSelectedDay ? selectedTextStyle : isToday ? todayTextStyle : unSelectedTextStyle,
+                  style: isSelectedDay && !isToday ? selectedTextStyle : isToday ? todayTextStyle : unSelectedTextStyle,
                 ),
 
                 SizedBox(height: 2),
@@ -110,7 +110,7 @@ class HorizontalListCalendarBody extends ConsumerWidget {
                   child: Text(
                     DateFormat.E().format(date),
 
-                    style: isSelectedDay ? selectedTextStyle : isToday ? todayTextStyle : unSelectedTextStyle,
+                    style: isSelectedDay && !isToday ? selectedTextStyle : isToday ? todayTextStyle : unSelectedTextStyle,
                   ),
                 ),
               ],
