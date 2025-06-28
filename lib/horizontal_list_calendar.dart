@@ -36,6 +36,10 @@ class HorizontalListCalendar extends StatelessWidget {
   ///
   /// Icon related properties
   ///
+  final bool monthChangeButton;
+  final bool canSelectDate;
+
+  ///
   ///
   final Icon? moveToPreviousMonthIcon;
   final Color moveToPreviousMonthIconBackgroundColor;
@@ -93,6 +97,8 @@ class HorizontalListCalendar extends StatelessWidget {
     ),
 
     /// icon parameter
+    this.canSelectDate = true,
+    this.monthChangeButton = true,
     this.iconSize = 18,
     this.moveToPreviousMonthIcon,
     this.moveToPreviousMonthIconBackgroundColor = Colors.blue,
@@ -118,6 +124,7 @@ class HorizontalListCalendar extends StatelessWidget {
           Padding(
             padding: headerPadding,
             child: HorizontalListCalendarHeader(
+              monthChangeButton: monthChangeButton,
               headerTextStyle: headerTextStyle,
               iconSize: iconSize,
               moveToPreviousMonthIcon: moveToPreviousMonthIcon,
@@ -135,6 +142,7 @@ class HorizontalListCalendar extends StatelessWidget {
           SizedBox(
             height: 70,
             child: HorizontalListCalendarBody(
+              canSelectDate: canSelectDate,
               onTap: onTap,
               selectedTextStyle: selectedTextStyle,
               selectedColor: selectedColor,

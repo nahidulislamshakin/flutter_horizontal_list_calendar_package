@@ -7,6 +7,8 @@ import '../../riverpod/horizontal_list_calendar_riverpod.dart';
 class HorizontalListCalendarBody extends ConsumerWidget {
   final Function(DateTime time) onTap;
 
+  final bool canSelectDate;
+
   /// selected
   final Color selectedColor;
   final Color selectedFillColor;
@@ -27,6 +29,7 @@ class HorizontalListCalendarBody extends ConsumerWidget {
   const HorizontalListCalendarBody({
     super.key,
     required this.onTap,
+    this.canSelectDate = true,
     required this.selectedTextStyle,
     required this.selectedColor,
     required this.selectedFillColor,
@@ -70,12 +73,15 @@ class HorizontalListCalendarBody extends ConsumerWidget {
             date.year == DateTime.now().year;
         bool isSelectedDay = date == horizontalListCalendarState.selectedDate;
         return GestureDetector(
-          onTap: () {
-            horizontalListCalendarNotifier.onSelectDate(
-              index: index,
-              onTap: onTap,
-            );
-          },
+          onTap:
+              canSelectDate
+                  ? () {
+                    horizontalListCalendarNotifier.onSelectDate(
+                      index: index,
+                      onTap: onTap,
+                    );
+                  }
+                  : () {},
           child: Container(
             width: 45,
             height: 68,
