@@ -5,6 +5,7 @@ import '../../riverpod/horizontal_list_calendar_riverpod.dart';
 
 class HorizontalListCalendarHeader extends ConsumerWidget {
   final TextStyle headerTextStyle;
+  final bool monthChangeButton;
   final double iconSize;
   final Icon? moveToPreviousMonthIcon;
   final Color moveToPreviousMonthIconBackgroundColor;
@@ -16,6 +17,7 @@ class HorizontalListCalendarHeader extends ConsumerWidget {
   const HorizontalListCalendarHeader({
     super.key,
     required this.headerTextStyle,
+    this.monthChangeButton = true,
     required this.iconSize,
     this.moveToPreviousMonthIcon,
     this.moveToNextMonthIcon,
@@ -62,30 +64,32 @@ class HorizontalListCalendarHeader extends ConsumerWidget {
 
         Spacer(),
 
-        moveToPreviousMonthIcon != null
-            ? GestureDetector(
-              onTap: () => horizontalListCalendarNotifier.changeMonth(-1),
-              child: moveToPreviousMonthIcon,
-            )
-            : _buildArrowButton(
-              onTap: () => horizontalListCalendarNotifier.changeMonth(-1),
-              color: moveToPreviousMonthIconBackgroundColor,
-              icon: Icons.arrow_back_ios_rounded,
-              iconColor: moveToPreviousMonthIconColor,
-            ),
-        SizedBox(width: 12),
+        if (monthChangeButton)
+          moveToPreviousMonthIcon != null
+              ? GestureDetector(
+                onTap: () => horizontalListCalendarNotifier.changeMonth(-1),
+                child: moveToPreviousMonthIcon,
+              )
+              : _buildArrowButton(
+                onTap: () => horizontalListCalendarNotifier.changeMonth(-1),
+                color: moveToPreviousMonthIconBackgroundColor,
+                icon: Icons.arrow_back_ios_rounded,
+                iconColor: moveToPreviousMonthIconColor,
+              ),
+        if (monthChangeButton) SizedBox(width: 12),
 
-        moveToNextMonthIcon != null
-            ? GestureDetector(
-              onTap: () => horizontalListCalendarNotifier.changeMonth(1),
-              child: moveToNextMonthIcon,
-            )
-            : _buildArrowButton(
-              onTap: () => horizontalListCalendarNotifier.changeMonth(1),
-              color: moveToNextMonthIconBackgroundColor,
-              icon: Icons.arrow_forward_ios_outlined,
-              iconColor: moveToNextMonthIconColor,
-            ),
+        if (monthChangeButton)
+          moveToNextMonthIcon != null
+              ? GestureDetector(
+                onTap: () => horizontalListCalendarNotifier.changeMonth(1),
+                child: moveToNextMonthIcon,
+              )
+              : _buildArrowButton(
+                onTap: () => horizontalListCalendarNotifier.changeMonth(1),
+                color: moveToNextMonthIconBackgroundColor,
+                icon: Icons.arrow_forward_ios_outlined,
+                iconColor: moveToNextMonthIconColor,
+              ),
       ],
     );
   }
