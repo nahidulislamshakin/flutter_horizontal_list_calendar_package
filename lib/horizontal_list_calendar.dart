@@ -59,8 +59,11 @@ class HorizontalListCalendar extends StatelessWidget {
   final Curve curve;
   final Duration duration;
 
+  final ScrollController scrollController;
+
   const HorizontalListCalendar({
     super.key,
+    required this.scrollController,
     required this.onTap,
     this.headerPadding = EdgeInsets.zero,
 
@@ -142,6 +145,7 @@ class HorizontalListCalendar extends StatelessWidget {
           SizedBox(
             height: 70,
             child: HorizontalListCalendarBody(
+              scrollController: scrollController,
               canSelectDate: canSelectDate,
               onTap: onTap,
               selectedTextStyle: selectedTextStyle,
