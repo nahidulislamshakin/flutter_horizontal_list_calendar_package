@@ -16,13 +16,15 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const MyHomePage(title: 'Horizontal List Calendar'),
+      home: MyHomePage(title: 'Horizontal List Calendar'),
     );
   }
 }
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key, required this.title});
+  MyHomePage({super.key, required this.title});
+
+  final ScrollController scrollController = ScrollController();
 
   final String title;
 
@@ -39,6 +41,7 @@ class MyHomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             HorizontalListCalendar(
+              scrollController: scrollController,
               onTap: (value) {
                 debugPrint("\nDate : ${value.toString()}\n");
               },

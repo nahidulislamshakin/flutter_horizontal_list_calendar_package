@@ -47,10 +47,10 @@ class HorizontalListCalendarHeader extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final horizontalListCalendarState = ref.watch(
-      horizontalListCalendarRiverpodProvider,
+      horizontalListCalendarProvider,
     );
     final horizontalListCalendarNotifier = ref.watch(
-      horizontalListCalendarRiverpodProvider.notifier,
+      horizontalListCalendarProvider.notifier,
     );
 
     return Row(

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
-
 import '../../riverpod/horizontal_list_calendar_riverpod.dart';
 
 class HorizontalListCalendarBody extends ConsumerWidget {
@@ -26,8 +25,11 @@ class HorizontalListCalendarBody extends ConsumerWidget {
   final Curve curve;
   final Duration duration;
 
+  final ScrollController scrollController;
+
   const HorizontalListCalendarBody({
     super.key,
+    required this.scrollController,
     required this.onTap,
     this.canSelectDate = true,
     required this.selectedTextStyle,
@@ -43,28 +45,44 @@ class HorizontalListCalendarBody extends ConsumerWidget {
     required this.duration,
   });
 
+  /// it will scroll to current date when the ListView build
+  void scrollToCurrentDate(horizontalListCalendarState) {
+    int currentIndex = horizontalListCalendarState.currentDate!.day - 1;
+    double itemWidth = 55;
+
+    /// Total scrollable width
+    double screenWidth = scrollController.position.viewportDimension;
+
+    /// Scroll to current date
+    double scrollTo =
+        (currentIndex * itemWidth) - (screenWidth / 2) + (itemWidth / 2);
+
+    scrollController.animateTo(
+      duration: duration,
+      curve: curve,
+      scrollTo.clamp(0, scrollController.position.maxScrollExtent),
+    );
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final horizontalListCalendarState = ref.watch(
-      horizontalListCalendarRiverpodProvider,
+      horizontalListCalendarProvider,
     );
     final horizontalListCalendarNotifier = ref.watch(
-      horizontalListCalendarRiverpodProvider.notifier,
+      horizontalListCalendarProvider.notifier,
     );
 
     /// Scroll to selected date
-    WidgetsBinding.instance.addPostFrameCallback(
-      (_) => horizontalListCalendarNotifier.scrollToCurrentDate(
-        duration: duration,
-        curve: curve,
-      ),
-    );
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      scrollToCurrentDate(horizontalListCalendarState);
+    });
 
     return ListView.builder(
       itemCount: horizontalListCalendarNotifier.daysInMonth.length,
       scrollDirection: Axis.horizontal,
       padding: EdgeInsets.zero,
-      controller: horizontalListCalendarNotifier.calendarScrollController,
+      controller: scrollController,
       itemBuilder: (_, index) {
         final date = horizontalListCalendarNotifier.daysInMonth[index];
         bool isToday =

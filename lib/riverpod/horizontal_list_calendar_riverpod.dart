@@ -1,18 +1,25 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'horizontal_list_calendar_state.dart';
 
-final horizontalListCalendarRiverpodProvider = StateNotifierProvider<
-  HorizontalListCalendarRiverpod,
+final horizontalListCalendarProvider = StateNotifierProvider<
+  HorizontalListCalendarNotifier,
   HorizontalListCalendarState
->((ref) => HorizontalListCalendarRiverpod());
+>((ref) => HorizontalListCalendarNotifier());
 
-class HorizontalListCalendarRiverpod
+class HorizontalListCalendarNotifier
     extends StateNotifier<HorizontalListCalendarState> {
-  HorizontalListCalendarRiverpod() : super(HorizontalListCalendarState()) {
+  HorizontalListCalendarNotifier() : super(HorizontalListCalendarState()) {
     setCurrentDate();
-    //  WidgetsBinding.instance.addPostFrameCallback((_) => scrollToCurrentDate());
   }
+
+  // late ScrollController _scrollController;
+
+  // void setScrollController(ScrollController scrollController){
+  //   _scrollController = scrollController;
+  //   setCurrentDate();
+  // }
+  /// ScrollController getter
+  // ScrollController get scrollController => _scrollController;
 
   void setCurrentDate() {
     final currentDate = DateTime(
@@ -24,7 +31,11 @@ class HorizontalListCalendarRiverpod
   }
 
   /// Scroll controller for calendar
-  final ScrollController calendarScrollController = ScrollController();
+
+  // void setScrollController(ScrollController scrollController) {
+  //   state = state.copyWith(calendarScrollController: scrollController);
+  //   setCurrentDate();
+  // }
 
   /// List of days in the current month
   List<DateTime> get daysInMonth => _getDaysInMonth(state.currentDate!);
@@ -50,24 +61,6 @@ class HorizontalListCalendarRiverpod
       currentDate = DateTime.now();
     }
     state = state.copyWith(currentDate: currentDate);
-  }
-
-  /// Scroll to current date
-  void scrollToCurrentDate({required Duration duration, required Curve curve}) {
-    int currentIndex = state.currentDate!.day - 1;
-    double itemWidth = 55;
-
-    /// Total scrollable width
-    double screenWidth = calendarScrollController.position.viewportDimension;
-
-    /// Scroll to current date
-    double scrollTo =
-        (currentIndex * itemWidth) - (screenWidth / 2) + (itemWidth / 2);
-    calendarScrollController.animateTo(
-      duration: duration,
-      curve: curve,
-      scrollTo.clamp(0, calendarScrollController.position.maxScrollExtent),
-    );
   }
 
   /// on select a date
