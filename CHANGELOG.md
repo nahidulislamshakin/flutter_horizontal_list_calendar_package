@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.0.1] - 2025-06-28
+## [1.0.0] - 2025-06-28
 ### Fix Bug
 - Fix the scroll controller bug.
 
